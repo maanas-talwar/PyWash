@@ -38,7 +38,7 @@ This is a project which aims to build a **Two-Pass Assembler for a real world sy
 ## Instruction Set Architecture
 - ``16-bit architecture`` has been chosen for our instructions and a ``12-bit , word addressable memory `` is used for the storage of our instructions and operands.
 
-<img src="" width = 260px height = 180px >
+<img src= "https://github.com/TheGupta2012/CAOproject/blob/main/instruction_format.JPG" width = 400px>
 
 
 
