@@ -1,0 +1,49 @@
+;  This is a simple program which takes in the timer , temperature, spin speed info and wash type info and executes 
+;  the wash cycle for a given amount of time as present in the timer info. 
+;  NOTE -
+> TIM, TMP, SPS, WAT are subroutines which hasve specific executiosns and we will define them later.
+> The length of the words is NOT THREE LETTER right now as this is just for illustration purposes.
+> Specifications of Status signals is not mentioned right now.
+
+START
+BSA TIM; **Time for which we want to execute**
+BSA TMP; **Temperature control**
+BSA SPS ; **Spin speed**
+BSA WAT ; **Wash type**
+
+LDA TIME I
+CMA
+INC
+; Loop to execute Washing of clothes
+LOP, INC
+     SPIN ; Not sure right now what to include here but yes, this is what is going to happen in this loop
+     SZA 
+     BUN LOP
+     
+INC   ; AC is incremented and is now 1
+STA WASHType I ; store AC's value in the memory location which specifies whether our machine is washing or draining ( drain - 1, wash - 0)
+CLA ; clearing AC
+STA TIME I ; storing 0 in timer and temperature info as we are only draining now
+STA TEMP I
+ICL ; inlet valve is cleared(means valve closed), no more water required
+OST ; outlet valve is set(means outlet valve opened), water to be flushed
+DRN ; Not sure right now what to implement here
+LDA CLEAN I ; loading CLN which is the constant amount of time for which we would drain our machine always
+CMA ; complement and incrementing so that negative value used as counter
+INC
+
+; The below loop corresponds to the fact that our clothes need to be dried after the draining operation and thus they are dried for a CLEAN 
+; amount of time.
+REP,  INC
+      SPN ; Not sure right now
+      SZA
+      BUN REP
+STA WASHType I; AC is stored in the wash type and spin speed (AC is actually zero and thus they are set to default)
+STA SPEED I
+STOP
+; Labels 
+TIME , HEX 0000
+TEMP , HEX 0001
+SPEED , HEX 0002
+WASHType , HEX 0003
+CLEAN , HEX 0004
