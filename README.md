@@ -33,6 +33,12 @@ This is a project which aims to build a **Two-Pass Assembler for a real world sy
 
 - Our system consists of a **timer** which controls how long a task has to be executed, **temperature control** which decides at which temperature the wash cycle operates, **spin speed** defines the speed at which the clothes are spun in the machine and **wash type control** which decides whether the machine is in washing phase or the drying phase.
 
+- The **timer**, **temperature control**, **spin speed** and **wash type control** are all controlled by sub-routines which implement the above descirbed operations, with some reserved memory locations, predefined labels and predefined values which correspond to a particular state of *temperature, spin speed and wash type*. The details of them are described further in the ISA of the machine.
+
+## Instruction Set Architecture
+- ``16-bit architecture`` has been chosen for our instructions and a ``12-bit , word addressable memory `` is used for the storage of our instructions and operands.
+
+<img src="" width = 260px height = 180px >
 
 
 
