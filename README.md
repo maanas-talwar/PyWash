@@ -35,15 +35,28 @@ This is a project which aims to build a **Two-Pass Assembler for a real world sy
 
 - The **timer**, **temperature control**, **spin speed** and **wash type control** are all controlled by sub-routines which implement the above descirbed operations, with some reserved memory locations, predefined labels and predefined values which correspond to a particular state of *temperature, spin speed and wash type*. The details of them are described further in the ISA of the machine.
 
-## Instruction Set Architecture
+## Instruction Set Architecture(ISA), Sub-routines and Reserved locations
+### ISA
 - ``16-bit architecture`` has been chosen for our instructions and a ``12-bit , word addressable memory `` is used for the storage of our instructions and operands.
 
 <img src= "https://github.com/TheGupta2012/CAOproject/blob/main/instruction_format.JPG" width = 400px>
 
+- The instructions used in our system are preceded by an addresssing mode bit which specifies *indirect* or *direct* addressing for our memory 
 
+- The instructions available are divided into three parts - *Register Reference, Memory Reference and Input Output* instructions 
 
-
-
+- The system has all the basic instructions that are required in any kind of processing unit and contains the registers which are mentioned below. A point to note is that there exists a special STATUS REGISTER which actually tells the system what it is doing at the moment.
+  - `AC` - Accumulator - 16bit
+  - `DR` - Data register - 16bit
+  - `PC` - Program counter - 12bit
+  - `AR` - Adress register - 12bit
+  - `INPR` - Input Register - 8bit
+  - `OUTR` - Output Register - 8bit
+  - `SR` - Status register - 8bit (extra bits provided for future changes in functionality)
+  
+      <img src = "https://github.com/TheGupta2012/CAOproject/blob/main/status_register.JPG" width = 400px>
+  
+ 
 
 
 
