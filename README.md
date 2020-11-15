@@ -35,16 +35,47 @@ This is a project which aims to build a **Two-Pass Assembler for a real world sy
 
 - The **timer**, **temperature control**, **spin speed** and **wash type control** are all controlled by sub-routines which implement the above descirbed operations, with some reserved memory locations, predefined labels and predefined values which correspond to a particular state of *temperature, spin speed and wash type*. The details of them are described further in the ISA of the machine.
 
-## Instruction Set Architecture
+## Instruction Set Architecture(ISA), Sub-routines and Reserved locations
+### ISA
 - ``16-bit architecture`` has been chosen for our instructions and a ``12-bit , word addressable memory `` is used for the storage of our instructions and operands.
 
 <img src= "https://github.com/TheGupta2012/CAOproject/blob/main/instruction_format.JPG" width = 400px>
 
+- The instructions used in our system are preceded by an addresssing mode bit which specifies *indirect* or *direct* addressing for our memory 
 
+- The instructions available are divided into three parts - *Register Reference, Memory Reference and Input Output* instructions 
 
-
-
-
+- The system has all the basic instructions that are required in any kind of processing unit and contains the registers which are mentioned below. A point to note is that there exists a special STATUS REGISTER which actually tells the system what it is doing at the moment.
+  - `AC` - Accumulator - 16bit
+  - `DR` - Data register - 16bit
+  - `PC` - Program counter - 12bit
+  - `AR` - Adress register - 12bit
+  - `INPR` - Input Register - 8bit
+  - `OUTR` - Output Register - 8bit
+  - `SR` - Status register - 8bit (extra bits provided for future changes in functionality)
+  
+      <img src = "https://github.com/TheGupta2012/CAOproject/blob/main/status_register.JPG" width = 400px>
+ 
+- **Instruction Set** : The instructions are based on the *Single Address Instruction* format and has the accumulator as the general purpose register. X referred to in the instructions is either a memory location or a symbolic address present as a label in the program.
+  - `STA X` : Store value of AC directly in X or the location whose address is stored in X.
+  - `LDA X` : Load the value of X directly or indirectly into AC.
+  - `ISZ X` : Increment X and the skip the next instruction if X is zero
+  - `BSA X` : Save return address in X and branch to the effective address of the subroutine.
+  - `BUN X` : Branch unconditionally to X
+  - `CLA`   : Clear AC , takes no operands
+  - `CMA`   : Complement AC , takes no operands
+  - `HLT`   : Halt computer , takes no operands
+  - `SRT`   : Start the execution of the machine , takes no operands
+  - `STP`   : Stop the execution of the machine , takes no operands
+  - `INC`   : Increment AC , takes no operands 
+  - `SZA`   : Skip next instruction if AC is zero , takes no operands
+  - `ICL`   : Clear inlet flag( inlet valve closed) , takes no operands
+  - `ICS`   : Set inlet flag ( inlet valve open) , takes no operands
+  - `OCL`   : Clear outlet flag ( outlet valve closed) , takes no operands
+  - `OCS`   : Set outlet flag ( outlet valve open) , takes no operands
+  - `INP`   : Input 8bit information and clear input flag , takes no operands
+  - `SKI`   : Skip if input flag is set , takes no operands
+  
 
 
 
