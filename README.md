@@ -64,7 +64,6 @@ This is a project which aims to build a **Two-Pass Assembler for a real world sy
   - `BUN X` : Branch unconditionally to X
   - `CLA`   : Clear AC , takes no operands
   - `CMA`   : Complement AC , takes no operands
-  - `HLT`   : Halt computer , takes no operands
   - `SRT`   : Start the execution of the machine , takes no operands
   - `STP`   : Stop the execution of the machine , takes no operands
   - `INC`   : Increment AC , takes no operands 
@@ -75,9 +74,35 @@ This is a project which aims to build a **Two-Pass Assembler for a real world sy
   - `OCS`   : Set outlet flag ( outlet valve open) , takes no operands
   - `INP`   : Input 8bit information and clear input flag , takes no operands
   - `SKI`   : Skip if input flag is set , takes no operands
+  - `SPN`   : Spinning the motor of the machine before a wash cycle(sets motor flag to 1), takes no operands
+  - `HLT`   : Halt motor (sets motor flag to 0), takes no operands 
   
+- **Sub-Routines** : The sub-routines for the **timing , wash-type, temperature and spin speed** are presented in this section. Note that these sub-routines refer to some predefined memory locations which are mentioned in the *Reserved Locations* section. We are presenting the software implementations of a program for a washing-machine cycle and thus the values associated with the different settings are input through *external switches* which indeed have representations of the values provided. The character input by the user is actually transferred in the `INPR` and then to the required memory locations in the internal executions of these subroutines.
 
+  - `TIM` : Setting the timer for the machine's wash cycle only. Can accept a single integer from 1-9 minutes and is input on the hardware.
+  
+  - `WTP` : Setting the wash type for the machine cycle. Values assigned for the wash type are -
+             
+             1: WASH 
+             0: DRAIN
+  - `TMP` : Setting the temperature of the water used in washing. Values assigned for temperature are -
+  
+             0 : COLD
+             1 : MILD
+             2 : WARM
+             3 : HOT        
+  - `SSP` : Setting the spin speed for the wash cycle of clothes. Values assigned to the spin speed are -
+  
+             0 : SLOW
+             1 : NORMAL
+             2 : FAST
 
+- **Reserved Locations** : Some locations have been reserved in the main memory of our system to store the parameters of the execution of our sub-routines. We actually require five memory locations for the sub-routines to execute completely. These memory locations should **always be present as labels at the end of your code**
+  - `hex0000` : Stores the timer value that is input by the user. Label name - `TM`
+  - `hex0001` : Stores the temperature type input by the user. Label name - `TP`
+  - `hex0002` : Stores the spin speed type input by the user. Label name - `SPD`
+  - `hex0003` : Stores the wash type input by the user. Label name - `WT`
+  - `hex0004` : A constant value that stores the amount of time required by machine to drain and dry clothes. Label name - `CLN`
 
 
 
