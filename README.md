@@ -16,7 +16,7 @@ This is a project which aims to build a **Two-Pass Assembler for a real world sy
 
 3. Open a terminal(linux/macOS) /command prompt(Windows) and navigate to the directory in which you downloaded the ``wash_assemble.py`` file.
 
-4. It is advised to write or save your assembly program in the same directory as your ``wash_assemble.py`` file. An assembly file can have any extension which is (.txt or .asm).
+4. It is advised to write or save your assembly program in the same directory as your ``wash_assemble.py`` file. An assembly file can have any extension which is (.txt or .asm). While writing any assembly program for the current assembler configuration, the code written in **SBR_memory_locs.txt** must be included before the `STP` instruction.
 
 5. Run the assembler program by typing ``python3 wash_assemble.py``
 
@@ -103,6 +103,51 @@ This is a project which aims to build a **Two-Pass Assembler for a real world sy
   - `hex0002` : Stores the spin speed type input by the user. Label name - `SPD`
   - `hex0003` : Stores the wash type input by the user. Label name - `WT`
   - `hex0004` : A constant value that stores the amount of time required by machine to drain and dry clothes. Label name - `CLN`
+  
+## Syntax
+### General 
+- Any kind of *variable or symbolic address* referred to in the following lines is enclosed in `[]` and all *comments* are preceded by `;`. Instruction code are written as they are.
+
+- Each **line of code** consists of three parts or *fields* - *label*, *instruction* and *comment*. Each line of code is terminated by a **new line**.
+
+- **START MACHINE (SRT)** : Every program that is written should start with `SRT` operation which denotes the **start of execution** of the machine. Note that it is mandatory to include `SRT` at the beginning of every program you write and a program missing it would generate an **error**.
+
+- **COMMENTS(;)** : Your program may include *comments* inside the program which are preceded by a `;` sign. The assembler ignores any and all text present after it encounters `;` in a line. Example - 
+
+``` 
+    ;This is a comment
+    LDA [hex 2000] ;this is a line of code
+```
+- **STOP MACHINE(STP)** : Every program must contain an `STP` instruction at the end of the assembly program. It is a mandatory instruction to be included in the program and an **error** occurs if it is not found. However, lines of code maybe present even after the `STP` instruction so as to define symbols. Example -
+
+```
+  1. ... ; Program 
+     STP 
+  2. ... ; Program 
+     STP 
+     A, hex 1000
+     B, hex 2000 
+```
+### Opcodes, Operands and Addressing
+### Valid Symbolic addresses and Labels
+### Example 
+### Errors
+
+## Running the Assembler
+### Steps
+### Screenshots
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
