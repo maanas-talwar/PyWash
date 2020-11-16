@@ -76,6 +76,7 @@ This is a project which aims to build a **Two-Pass Assembler for a real world sy
   - `SKI`   : Skip if input flag is set , takes no operands
   - `SPN`   : Spinning the motor of the machine before a wash cycle(sets motor flag to 1), takes no operands
   - `HLT`   : Halt motor (sets motor flag to 0), takes no operands 
+  - `STP`   : Halt execution of washing machine, takes no operands
   
 - **Sub-Routines** : The sub-routines for the **timing , wash-type, temperature and spin speed** are presented in this section. Note that these sub-routines refer to some predefined memory locations which are mentioned in the *Reserved Locations* section. We are presenting the software implementations of a program for a washing-machine cycle and thus the values associated with the different settings are input through *external switches* which indeed have representations of the values provided. The character input by the user is actually transferred in the `INPR` and then to the required memory locations in the internal executions of these subroutines.
 
