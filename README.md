@@ -76,6 +76,9 @@ This is a project which aims to build a **Two-Pass Assembler for a real world sy
   - `SKI`   : Skip if input flag is set , takes no operands
   - `SPN`   : Spinning the motor of the machine before a wash cycle(sets motor flag to 1), takes no operands
   - `HLT`   : Halt motor (sets motor flag to 0), takes no operands 
+  - ***PSEUDO INSTRUCTIONS*** 
+     - `HEX N` : Hexadecimal number N to be converted to binary
+     - `DEC N` : Signed decimal number N to be converted to binary 
   
 - **Sub-Routines** : The sub-routines for the **timing , wash-type, temperature and spin speed** are presented in this section. Note that these sub-routines refer to some predefined memory locations which are mentioned in the *Reserved Locations* section. We are presenting the software implementations of a program for a washing-machine cycle and thus the values associated with the different settings are input through *external switches* which indeed have representations of the values provided. The character input by the user is actually transferred in the `INPR` and then to the required memory locations in the internal executions of these subroutines.
 
@@ -129,9 +132,66 @@ This is a project which aims to build a **Two-Pass Assembler for a real world sy
      B, hex 2000 
 ```
 ### Opcodes, Operands and Addressing
-### Valid Symbolic addresses and Labels
+- All the opcodes and operands are separated by one or more spaces. All the operands are *case sensitive* while opcodes are not.
+
+- The *Memory Reference Instructions* occupy 2 or three symbols separated by spaces. First must be a **3 - letter symbol** defining an *MRI*. Second is a symbolic adress. The third symbol,which may or may not be present, is the letter *I*, after the operand field, to denote **indirect addressing**. Direct Addressing is assumed for any MRI instruction not ending in *I*.
+
+- Any *Non-MRI* must only contain a **3 - letter symbol** specifying one of the valid *Non-MRI* as given above.
+
+- Every line should be terminated by pressing enter or by a comment field which is in turn terminated by a new line at the end. 
+
+#### Syntax
+ `opcode [operand_name] [I]`
+#### Examples 
+  ```
+  LDA and lda are same opcodes.
+  Var, VAR, var are different operands
+  CLA       ; non-MRI
+  LDA var I ; Indirect Addressing MRI
+  LDA var   ; Direct Addressing MRI
+  ```
+  
+### Symbolic addresses and Labels
+- There are certain rules defined for the declaration of the symbolic addresses and labels in your program. They are -
+  1. It can not contain spaces
+  2. It may not start with a numeric value
+  3. It can start with and contain only Alpha-numeric characters and `_`
+  4. It can not be same as a predefined label, sub-routine or opcode
+  5. It can not be the same as an already declared symbol / label
+  6. It must contain **at most 3 characters**
+#### Valid symbolic addresses and labels
+ ```
+ VAR
+ a
+ AB_
+ t1
+ ```
+#### Invalid symbolic addresses and labels
+ ```
+ 2va      ; starts with a numeric value
+ t.v      ; contains "." character
+ m v      ; contains a space in the declaration
+ SPN/spn  ; same as a predefined instrcution
+ ```
+#### Syntax for labels
+- The label name must be followed by a ":" immediately after the label name and the code associated with the label may start from the same line,separated by one or more spaces, or from the next line.
+- If the label defines an operand, it must be followed by a "," without a space. The value associated with the symbol must be defined in the same line after the ",".
+```
+[LABEL_NAME]: additional code
+[LABEL_NAME], value
+```
+
 ### Example 
+- Please click [here](https://github.com/TheGupta2012/CAOproject/blob/main/example_program.txt) to see an example program written according to the rules provided.
 ### Errors
+- The following rules have to be taken care of while writing a program for the execution of a washing machine assembly program. They are - 
+  - Each and every line must be terminated by a **new line**. Not doing so results in a syntax error.
+  - Each line of code must contain atmost three *fields* that are label, instruction, comments. A line of code conatining any more fields is considered as an error.
+  - Each symbolic address that is mentioned in any instruction field must occur again as a label field. If not found, an error is generated.
+  - No symbolic address or label must be same as a predefined opcode, sub-routine or label field. If a same name is found, an error is generated.
+  - All the *Memory Reference Instructions* must contain an operand or a constant value. Failure to detect an operand in an *MRI* produces an error.
+  - All the *Non- Memory Reference Instructions* must not contain any operand value. An error is generated if the assembler detects an operand.
+  - // to do more
 
 ## Running the Assembler
 ### Steps
