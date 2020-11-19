@@ -173,6 +173,7 @@ This is a project which aims to build a **Two-Pass Assembler for a real world sy
  t.v      ; contains "." character
  m v      ; contains a space in the declaration
  SPN/spn  ; same as a predefined instrcution
+ name     ; contains more than 3 letters
  ```
 #### Syntax for labels
 - The label name must be followed by a ":" immediately after the label name and the code associated with the label may start from the same line,separated by one or more spaces, or from the next line.
