@@ -1,7 +1,7 @@
 # Two-Pass Assembler for a Washing Machine System - Computer Organization(CEECC07)
 This is a project which aims to build a **Two-Pass Assembler for a real world system.**
 ### Team Members 
-- Maanas Talwar - Roll No: 2019UCO1580
+- Maanas Talwar - Roll No: 2019UCO1544
 - Anav Chaudhary - Roll No: 2019UCO1577
 - Aryaman Sharma - Roll No: 2019UCO1508
 - Harshit Gupta - Roll No: 2019UCO1580
