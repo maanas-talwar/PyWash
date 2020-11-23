@@ -69,14 +69,14 @@ This is a project which aims to build a **Two-Pass Assembler for a real world sy
   - `INC`   : Increment AC , takes no operands 
   - `SZA`   : Skip next instruction if AC is zero , takes no operands
   - `ICL`   : Clear inlet flag( inlet valve closed) , takes no operands
-  - `ICS`   : Set inlet flag ( inlet valve open) , takes no operands
+  - `IST`   : Set inlet flag ( inlet valve open) , takes no operands
   - `OCL`   : Clear outlet flag ( outlet valve closed) , takes no operands
-  - `OCS`   : Set outlet flag ( outlet valve open) , takes no operands
+  - `OST`   : Set outlet flag ( outlet valve open) , takes no operands
   - `INP`   : Input 8bit information and clear input flag , takes no operands
   - `SKI`   : Skip if input flag is set , takes no operands
   - `SPN`   : Spinning the motor of the machine before a wash cycle(sets motor flag to 1), takes no operands
   - `HLT`   : Halt motor (sets motor flag to 0), takes no operands 
-  - `STP`   : Halt execution of washing machine, takes no operands
+  - `DRN`   : Start to drain the water present in the machine, takes no operands
   - ***PSEUDO INSTRUCTIONS*** 
      - `HEX N` : Hexadecimal number N to be converted to binary
      - `DEC N` : Signed decimal number N to be converted to binary 
@@ -198,18 +198,3 @@ This is a project which aims to build a **Two-Pass Assembler for a real world sy
 ## Running the Assembler
 ### Steps
 ### Screenshots
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
