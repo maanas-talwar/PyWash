@@ -193,7 +193,6 @@ This is a project which aims to build a **Two-Pass Assembler for a real world sy
   - No symbolic address or label must be same as a predefined opcode, sub-routine or label field. If a same name is found, an error is generated.
   - All the *Memory Reference Instructions* must contain an operand or a constant value. Failure to detect an operand in an *MRI* produces an error.
   - All the *Non- Memory Reference Instructions* must not contain any operand value. An error is generated if the assembler detects an operand.
-  - // to do more
 
 ## Running the Assembler
 ### Steps
