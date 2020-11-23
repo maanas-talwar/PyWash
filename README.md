@@ -87,8 +87,8 @@ This is a project which aims to build a **Two-Pass Assembler for a real world sy
   
   - `WTP` : Setting the wash type for the machine cycle. Values assigned for the wash type are -
              
-             1: WASH 
-             0: DRAIN
+             0: WASH 
+             1: DRAIN
   - `TMP` : Setting the temperature of the water used in washing. Values assigned for temperature are -
   
              0 : COLD
