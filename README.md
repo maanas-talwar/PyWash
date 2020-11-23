@@ -187,13 +187,13 @@ This is a project which aims to build a **Two-Pass Assembler for a real world sy
 - Please click [here](https://github.com/TheGupta2012/CAOproject/blob/main/example_program.txt) to see an example program written according to the rules provided.
 ### Errors
 - The following rules have to be taken care of while writing a program for the execution of a washing machine assembly program. They are - 
+  - Every program must contain an `SRT` (START) instruction as the first instruction. Failure to do so would result in a **fatal error** and the execution of the assembler would not be initiated. 
   - Each and every line must be terminated by a **new line**. Not doing so results in a syntax error.
   - Each line of code must contain atmost three *fields* that are label, instruction, comments. A line of code conatining any more fields is considered as an error.
   - Each symbolic address that is mentioned in any instruction field must occur again as a label field. If not found, an error is generated.
   - No symbolic address or label must be same as a predefined opcode, sub-routine or label field. If a same name is found, an error is generated.
   - All the *Memory Reference Instructions* must contain an operand or a constant value. Failure to detect an operand in an *MRI* produces an error.
   - All the *Non- Memory Reference Instructions* must not contain any operand value. An error is generated if the assembler detects an operand.
-  - // to do more
 
 ## Running the Assembler
 ### Steps
