@@ -1,49 +1,69 @@
 ;  This is a simple program which takes in the timer , temperature, spin speed info and wash type info and executes 
 ;  the wash cycle for a given amount of time as present in the timer info. 
 ;  NOTE -
-> TIM, TMP, SPS, WAT are subroutines which hasve specific executiosns and we will define them later.
-> The length of the words is NOT THREE LETTER right now as this is just for illustration purposes.
-> Specifications of Status signals is not mentioned right now.
+; TIM, TMP, SPS, WAT are subroutines which have specific executions
 
-START
+SRT
 BSA TIM; **Time for which we want to execute**
 BSA TMP; **Temperature control**
 BSA SPS ; **Spin speed**
 BSA WAT ; **Wash type**
 
-LDA TIME I
+LDA TM I
 CMA
 INC
 ; Loop to execute Washing of clothes
+SPN   ; start spinning of the motor
 LOP, INC
-     SPIN ; Not sure right now what to include here but yes, this is what is going to happen in this loop
      SZA 
      BUN LOP
-     
+HLT   ; halt the motor
+
 INC   ; AC is incremented and is now 1
-STA WASHType I ; store AC's value in the memory location which specifies whether our machine is washing or draining ( drain - 1, wash - 0)
+STA WSH I ; store AC's value in the memory location which specifies  that  our ; machine is draining ( drain - 1, wash - 0)
 CLA ; clearing AC
-STA TIME I ; storing 0 in timer and temperature info as we are only draining now
-STA TEMP I
+STA TM I ; storing 0 in timer and temperature as we are only draining now
+STA TMP I
 ICL ; inlet valve is cleared(means valve closed), no more water required
 OST ; outlet valve is set(means outlet valve opened), water to be flushed
-DRN ; Not sure right now what to implement here
-LDA CLEAN I ; loading CLN which is the constant amount of time for which we would drain our machine always
-CMA ; complement and incrementing so that negative value used as counter
-INC
+DRN ; drain the water present in the machine
 
-; The below loop corresponds to the fact that our clothes need to be dried after the draining operation and thus they are dried for a CLEAN 
-; amount of time.
+; The below loop corresponds to the fact that our clothes need to be dried after ; the draining operation and thus they are dried for a CLEAN amount of time.
+
+LDA CLN ; loading CLEAN which is the amount of time for which we would drain our machine always
+CMA ; complement and incrementing so that negative value used as counter
+INC 
+SPN ; start the spinning of the motor
 REP,  INC
-      SPN ; Not sure right now
       SZA
       BUN REP
-STA WASHType I; AC is stored in the wash type and spin speed (AC is actually zero and thus they are set to default)
-STA SPEED I
-STOP
-; Labels 
-TIME , HEX 0000
-TEMP , HEX 0001
-SPEED , HEX 0002
-WASHType , HEX 0003
-CLEAN , HEX 0004
+HLT ; halt the motor
+STA WSH I; AC is stored in the wash type and spin speed (AC is actually zero ;and thus they are set to default)
+STA SPD I
+STP
+; Labels and sub - routines
+TIM, SKI
+     BUN TIM
+     INP
+     STA TM I
+     BUN TIM I
+TMP, SKI
+     BUN TMP
+     INP
+     STA TMP I
+     BUN TMP I
+SSP, SKI
+     BUN SSP
+     INP
+     STA SPD I
+     BUN SSP I
+WTP, SKI
+     BUN WTP
+     INP
+     STA WSH I
+     BUN WTP I
+TM   , HEX 0000 ; timer value
+TMP  , HEX 0001 ; temperature type
+SPD  , HEX 0002 ; spin speed value
+WSH  , HEX 0003 ; wash type
+CLN  , HEX 0004 ; drying time

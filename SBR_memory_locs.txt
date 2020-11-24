@@ -1,0 +1,26 @@
+; Mandatory sub-routines and memory labels to be present in the program.
+TIM, SKI
+     BUN TIM
+     INP
+     STA TM I
+     BUN TIM I
+TMP, SKI
+     BUN TMP
+     INP
+     STA TP I
+     BUN TMP I
+SSP, SKI
+     BUN SSP
+     INP
+     STA SPD I
+     BUN SSP I
+WTP, SKI
+     BUN WTP
+     INP
+     STA WT I
+     BUN WTP I
+TM, HEX 0000
+TP, HEX 0001
+SPD, HEX 0002
+WT, HEX 0003
+CLN, HEX 0004
