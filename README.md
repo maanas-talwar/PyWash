@@ -18,7 +18,7 @@ This is a project which aims to build a **Two-Pass Assembler for a real world sy
 
 4. It is advised to write or save your assembly program in the same directory as your ``wash_assemble.py`` file. An assembly file can have any extension which is (.txt or .asm). While writing any assembly program for the current assembler configuration, the code written in **SBR_memory_locs.txt** must be included before the `STP` instruction.
 
-5. Run the assembler program by typing ``python3 wash_assemble.py``
+5. Run the assembler program by typing ``python ./wash_assemble.py``
 
 6. After the execution of the above command, you will be prompted to type in the name your assembly file. NOTE - please provide the exact path if the file is not in the smae directory as the assembler code.
 
