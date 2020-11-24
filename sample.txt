@@ -6,38 +6,38 @@
 SRT
 BSA TIM; Time for which we want to execute
 BSA TMP; Temperature control
-BSA SPS ; Spin speed
-BSA WAT ; Wash type
+BSA SPS; Spin speed
+BSA WAT; Wash type
 
 LDA TM I
 CMA
 INC
 ; Loop to execute Washing of clothes
-SPN   ; start spinning of the motor
+SPN; start spinning of the motor
 LOP: INC
      SZA 
      BUN LOP
-HLT   ; halt the motor
+HLT; halt the motor
 
-INC   ; AC is incremented and is now 1
-STA WSH I ; store AC's value in the memory location which specifies that our machine is draining ( drain - 1, wash - 0)
-CLA ; clearing AC
-STA TM I ; storing 0 in timer and temperature as we are only draining now
+INC; AC is incremented and is now 1
+STA WSH I; store AC's value in the memory location which specifies that our machine is draining ( drain - 1, wash - 0)
+CLA; clearing AC
+STA TM I; storing 0 in timer and temperature as we are only draining now
 STA TMP I
-ICL ; inlet valve is cleared(means valve closed), no more water required
-OST ; outlet valve is set(means outlet valve opened), water to be flushed
-DRN ; drain the water present in the machine
+ICL; inlet valve is cleared(means valve closed), no more water required
+OST; outlet valve is set(means outlet valve opened), water to be flushed
+DRN; drain the water present in the machine
 
 ; The below loop corresponds to the fact that our clothes need to be dried after ; the draining operation and thus they are dried for a CLEAN amount of time.
 
-LDA CLN ; loading CLEAN which is the amount of time for which we would drain our machine always
-CMA ; complement and incrementing so that negative value used as counter
+LDA CLN; loading CLEAN which is the amount of time for which we would drain our machine always
+CMA; complement and incrementing so that negative value used as counter
 INC 
-SPN ; start the spinning of the motor
+SPN; start the spinning of the motor
 REP:  INC
       SZA
       BUN REP
-HLT ; halt the motor
+HLT; halt the motor
 STA WSH I; AC is stored in the wash type and spin speed (AC is actually zero ;and thus they are set to default)
 STA SPD I
 STP
@@ -62,8 +62,8 @@ WTP: SKI
      INP
      STA WSH I
      BUN WTP I
-TM   , HEX 0000 ; timer value
-TMP  , HEX 0001 ; temperature type
-SPD  , HEX 0002 ; spin speed value
-WSH  , HEX 0003 ; wash type
-CLN  , HEX 0004 ; drying time
+TM, HEX 0000 ; timer value
+TMP, HEX 0001 ; temperature type
+SPD, HEX 0002 ; spin speed value
+WSH, HEX 0003 ; wash type
+CLN, HEX 0004 ; drying time
