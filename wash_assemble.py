@@ -4,8 +4,8 @@
     # IO -> Input/ output
     # PSEUDO -> Pseudo instructions
 MRI = {'STA': '0000','LDA':'0001','ISZ':'0010','BSA':'0011','BUN':'0100'}
-REGREF = { 'CLA':'','CMA':'','INC':'','SZA':'','ICL':'','ICS':'',
-    'OCL':'','OCS':'','SPN':'','HLT':'','SRT':'','STP':''}
+REGREF = { 'CLA':'','CMA':'','INC':'','SZA':'','ICL':'','IST':'',
+    'OCL':'','OST':'','SPN':'','HLT':'','SRT':'','STP':''}
 # Generating the opcodes
 seven = '1111'
 counter = 1<<11
