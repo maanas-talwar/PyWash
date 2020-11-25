@@ -49,6 +49,7 @@ def pass1(name):
 
 def pass2(name):
     with open(name, "r") as file:
+        outputFile = File.open("OutputFile.txt", "w")
         LocationCounter = 10
         line = file.readline()
         while(line):
@@ -71,15 +72,18 @@ def pass2(name):
                         Instruction = MRI[field[0]]
                         if field[1] != None:
                             Address = labels[field[1]] if (field[1] in labels) else operands[field[1]]
+                            outputFile.write(LocationCounter, Instruction, Address)
                         else:
                             #ERROR
-                            print("*****************")
+                            outputFile.write("*****************")
                     elif field[0] in REGREF:
                         Instruction = REGREF[field[0]]
                         Address = ""
+                        outputFile.write(LocationCounter, Instruction, Address)
                     
-                    print(LocationCounter, Instruction, Address)
+                    #print(LocationCounter, Instruction, Address)
                     LocationCounter += 1
                     line = file.readline()
                 except:
                     print ("******************")
+        outputFile.close()
