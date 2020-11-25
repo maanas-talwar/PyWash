@@ -1,5 +1,4 @@
-
-import Pass   
+import Pass
     # Defining the hardcodes of the instructions present in our system
     # MRI-> Memory reference
     # REGREF -> Register reference
@@ -31,11 +30,10 @@ if(len(name.split('.')) == 2):
     # Checking the extension for the file
     if(ext == "txt" or ext == "asm"):
         try:
-            file = open(name,'r+')
             # append code here -> aryaman.
             file = open(name, 'r+')
             program = file.readlines()
-            print(program)
+            #print(program)
             program = [' '.join(i.split(";", 1)[0].split()) for i in program]
             program = [i.upper() for i in program if i]
             print(program)
@@ -128,7 +126,7 @@ if(len(name.split('.')) == 2):
             Pass.pass1(name)
             Pass.pass2(name)
         except:
-            print("Error in opening", name, "\nPlease check its availability in your current directory.")
+            print("Error in opening",name,"\nPlease check its availability in your current directory.")
     else:
         print(ext, "extension not suppported.\nPlease enter a file with extensions .txt or .asm")
 else:
