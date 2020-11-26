@@ -20,10 +20,10 @@ LOP: INC
 HLT; halt the motor
 
 INC; AC is incremented and is now 1
-STA WSH I; store AC's value in the memory location which specifies that our machine is draining ( drain - 1, wash - 0)
+STA WT I; store AC's value in the memory location which specifies that our machine is draining ( drain - 1, wash - 0)
 CLA; clearing AC
 STA TM I; storing 0 in timer and temperature as we are only draining now
-STA TMP I
+STA TP I
 ICL; inlet valve is cleared(means valve closed), no more water required
 OST; outlet valve is set(means outlet valve opened), water to be flushed
 DRN; drain the water present in the machine
@@ -38,7 +38,7 @@ REP:  INC
       SZA
       BUN REP
 HLT; halt the motor
-STA WSH I; AC is stored in the wash type and spin speed (AC is actually zero ;and thus they are set to default)
+STA WT I; AC is stored in the wash type and spin speed (AC is actually zero ;and thus they are set to default)
 STA SPD I
 STP
 ; Labels and sub - routines
@@ -50,7 +50,7 @@ TIM: SKI
 TMP: SKI
      BUN TMP
      INP
-     STA TMP I
+     STA TP I
      BUN TMP I
 SSP: SKI
      BUN SSP
@@ -60,10 +60,10 @@ SSP: SKI
 WTP: SKI
      BUN WTP
      INP
-     STA WSH I
+     STA WT I
      BUN WTP I
 TM, HEX 0000 ; timer value
-TMP, HEX 0001 ; temperature type
+TP, HEX 0001 ; temperature type
 SPD, HEX 0002 ; spin speed value
-WSH, HEX 0003 ; wash type
+WT, HEX 0003 ; wash type
 CLN, HEX 0004 ; drying time
