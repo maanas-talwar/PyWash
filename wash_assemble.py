@@ -1,4 +1,4 @@
-# import Pass
+import Pass
     # Defining the hardcodes of the instructions present in our system
     # MRI-> Memory reference
     # REGREF -> Register reference
@@ -48,7 +48,6 @@ if(len(name.split('.')) == 2):
             condition1 = 1
         else:
             print("Program is not started by SRT")
-
         # condition 2
         condition2 = 1
         for i in program:
@@ -121,7 +120,6 @@ if(len(name.split('.')) == 2):
             print("No MRI error")
         if condition6 == 1:
             print("No non-MRI error")
-
         # syntax analysis
         for i in address:
             if i[0].isnumeric() or len(i) > 3 or '.' in i:
