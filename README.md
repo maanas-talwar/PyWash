@@ -48,7 +48,7 @@ This is a project which aims to build a **Two-Pass Assembler for a real world sy
 
 - `16-bit architecture` has been chosen for our instructions and a `12-bit , word addressable memory` is used for the storage of our instructions and operands.
 
-<img src= "https://github.com/TheGupta2012/CAOproject/blob/main/instruction_format.JPG" width = 400px>
+<img src= "https://github.com/TheGupta2012/CAOproject/blob/main/READMEdata/instruction_format.JPG" width = 400px>
 
 - The instructions used in our system are preceded by an addresssing mode bit which specifies _indirect_ or _direct_ addressing for our memory
 
@@ -63,7 +63,7 @@ This is a project which aims to build a **Two-Pass Assembler for a real world sy
   - `INPR` - Input Register - 8bit
   - `OUTR` - Output Register - 8bit
   - `SR` - Status register - 8bit (extra bits provided for future changes in functionality)  
-     <img src = "https://github.com/TheGupta2012/CAOproject/blob/main/status_register.JPG" width = 400px>
+     <img src = "https://github.com/TheGupta2012/CAOproject/blob/main/READMEdata/status_register.JPG" width = 400px>
 
 - **Instruction Set** : The instructions are based on the _Single Address Instruction_ format and has the accumulator as the general purpose register. X referred to in the instructions is either a memory location or a symbolic address present as a label in the program.
 - Memeory Reference Instructions
