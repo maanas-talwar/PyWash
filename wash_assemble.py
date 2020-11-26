@@ -1,4 +1,4 @@
-# import Pass
+import Pass
     # Defining the hardcodes of the instructions present in our system
     # MRI-> Memory reference
     # REGREF -> Register reference
