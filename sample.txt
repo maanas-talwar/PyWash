@@ -1,13 +1,13 @@
-;  This is a simple program which takes in the timer, temperature, spin speed info and wash type info and executes 
-;  the wash cycle for a given amount of time as present in the timer info. 
+;  This is a simple program which takes in the timer, temperature, spin speed info and wash type info and executes
+;  the wash cycle for a given amount of time as present in the timer info.
 ;  NOTE -
 ; TIM, TMP, SPS, WAT are subroutines which have specific executions
 
 SRT
 BSA TIM; Time for which we want to execute
 BSA TMP; Temperature control
-BSA SPS; Spin speed
-BSA WAT; Wash type
+BSA SPD; Spin speed
+BSA WTP; Wash type
 
 LDA TM I
 CMA
@@ -15,7 +15,7 @@ INC
 ; Loop to execute Washing of clothes
 SPN; start spinning of the motor
 LOP: INC
-     SZA 
+     SZA
      BUN LOP
 HLT; halt the motor
 
@@ -32,7 +32,7 @@ DRN; drain the water present in the machine
 
 LDA CLN; loading CLEAN which is the amount of time for which we would drain our machine always
 CMA; complement and incrementing so that negative value used as counter
-INC 
+INC
 SPN; start the spinning of the motor
 REP:  INC
       SZA
