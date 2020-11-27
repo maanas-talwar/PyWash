@@ -75,10 +75,11 @@ if(len(name.split('.')) == 2):
         condition4 = 0
         labels = []
         reserved = {'TM', 'TP', 'SPD', 'WT', 'CLN'}
-        for i in program[eof+1:len(program)]:
+        for i in program:
             if ',' in i and i.split(',')[0].split(" ")[0] not in reserved:
                 labels.append(i.split(',')[0].split(" ")[0])
-
+            if ':' in i and i.split(':')[0].split(" ")[0] not in reserved:
+                labels.append(i.split(':')[0].split(" ")[0])
         if(len(labels) != len(set(labels))):
             print(RED.format("Your labels contain duplicate names "))
         else:
