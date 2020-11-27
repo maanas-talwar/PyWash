@@ -39,7 +39,7 @@ if(len(name.split('.')) == 2):
         #print(program)
         program = [' '.join(i.split(";", 1)[0].split()) for i in program]
         program = [i.upper() for i in program if i]
-        print(program)
+        #print(program)
 
         # condition 1
         condition1 = 0
@@ -124,6 +124,8 @@ if(len(name.split('.')) == 2):
         for i in address:
             if i[0].isnumeric() or len(i) > 3 or '.' in i:
                 print(i, "is an invalid address")
+        
+        #Two pass assembly
         Pass.pass1(name)
         Pass.pass2(name)
     else:

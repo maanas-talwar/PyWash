@@ -63,7 +63,7 @@ def pass2(name):
                     # dropped ':' and ','
                     field = field[:-1]
 
-                if field[0] in labels:
+                if field and field[0] in labels:
                     field = field[1:]
                 if not field:
                     continue
