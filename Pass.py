@@ -49,7 +49,7 @@ def pass1(name):
 
 def pass2(name):
     with open(name, "r") as file:
-        outputFile = File.open("OutputFile.txt", "w")
+        outputFile = open("OutputFile.txt", "w")
         LocationCounter = 10
         line = file.readline()
         while(line):
@@ -65,7 +65,7 @@ def pass2(name):
 
                 if field[0] in labels:
                     field = field[1:]
-                if not flds:
+                if not field:
                     continue
                 try:
                     if field[0] in MRI:
@@ -80,7 +80,7 @@ def pass2(name):
                         Instruction = REGREF[field[0]]
                         Address = ""
                         outputFile.write(LocationCounter, Instruction, Address)
-                    
+
                     #print(LocationCounter, Instruction, Address)
                     LocationCounter += 1
                     line = file.readline()
