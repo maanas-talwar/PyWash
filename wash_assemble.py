@@ -65,37 +65,39 @@ if(len(name.split('.')) == 2):
             print("No syntax error")
 
             # condition 3
-            condition3 = 0
-            address = set()
+        condition3 = 0
+        address = set()
+        for i in program:
+            if(i == 'STP'):
+                eof = program.index(i)
+                break
+        if(i[0:3] in MRI):
+            address.add(i[4:8].split(' ')[0]) if i[4:8] not in address else address
+            check = set()
+            file2 = open('mandatorySBR.txt', 'r')
+            program2 = file2.readlines()
+            for i in program2:
+                if ',' in i:
+                    check.add(i.split(',')[0]) if i.split(',')[0] not in check else check
+                if ':' in i:
+                    check.add(i.split(':')[0]) if i.split(':')[0] not in check else check
             for i in program:
-                if(i == 'STP'):
-                    eof = program.index(i)
-                    break
-            if(i[0:3] in MRI):
-                address.add(i[4:8].split(' ')[0]) if i[4:8] not in address else address
-                check = set()
-                file2 = open('mandatorySBR.txt', 'r')
-                program2 = file2.readlines()
-                for i in program2:
-                    if ',' in i:
-                        check.add(i.split(',')[0]) if i.split(',')[0] not in check else check
-                    if ':' in i:
-                        check.add(i.split(':')[0]) if i.split(':')[0] not in check else check
-                for i in program:
-                    if ':' in i:
-                        check.add(i.split(':')[0]) if i.split(':')[0] not in check else check
-                #condition3 = 1 if all(i.split(',')[0].split(" ")[0] in address.union(MRI) for i in program) else 0
-                condition3 = 1 if address.difference(check) == set() else 0
-                print("No labelling error") if condition3 == 1 else print(
-                    "You missed some labels: ", address.difference(check))
-            # condition 4
-            condition4 = 0
-            labels = []
-            reserved = {'TIM', 'TMP', 'SPS', 'WAT', 'CLN'}
-            for i in program[eof+1:len(program)]:
-                if ',' in i and i.split(',')[0].split(" ")[0] not in reserved:
-                    labels.append(i.split(',')[0].split(" ")[0])
-
+                if ':' in i:
+                    check.add(i.split(':')[0]) if i.split(':')[0] not in check else check
+            #condition3 = 1 if all(i.split(',')[0].split(" ")[0] in address.union(MRI) for i in program) else 0
+            condition3 = 1 if address.difference(check) == set() else 0
+            print("No labelling error") if condition3 == 1 else print(
+                "You missed some labels: ", address.difference(check))
+        # condition 4
+        condition4 = 0
+        labels = []
+        reserved = {'TIM', 'TMP', 'SPS', 'WAT', 'CLN'}
+        for i in program:
+            if ',' in i and i.split(',')[0].split(" ")[0] not in reserved:
+                labels.append(i.split(',')[0].split(" ")[0])
+            if ':' in i and i.split(':')[0].split(" ")[0] not in reserved:
+                labels.append(i.split(':')[0].split(" ")[0])
+        print(labels)
         if(len(labels) != len(set(labels))):
             print("Your labels contain duplicate names ")
         else:
