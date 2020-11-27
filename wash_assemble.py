@@ -115,7 +115,7 @@ if(len(name.split('.')) == 2):
                     condition5 = 0
                     break
             else:
-                if ',' in i:
+                if ',' in i or ':' in i:
                     continue
                 else:
                     if len(i) != 3:
