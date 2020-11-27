@@ -4,27 +4,15 @@ import Pass
     # REGREF -> Register reference
     # IO -> Input/ output
     # PSEUDO -> Pseudo instructions
-MRI = {'STA': '0000','LDA':'0001','ISZ':'0010','BSA':'0011','BUN':'0100'}
-REGREF = { 'SRT':'','STP':'','SPN':'','HLT':'','ICL':'',
-    'IST':'','OCL':'','OST':'','CLA':'','CMA':'','INC':'','SZA':''}
-
-# Generating the opcodes
-seven = '0111'
-counter = 1 << 11
-zeroes = ""
-for a, b in REGREF.items():
-    binary = str(bin(counter))[2:]
-    REGREF[a] = seven+zeroes+binary
-    zeroes += '0'
-    counter = counter >> 1
-REGREF['LCK'] = '0111000000000000'
-IO = {'SKI': '1111100000000000', 'INP': '1111010000000000'}
+from hardcode import *
 # print("Memory Reference :",MRI)
 # print()
 # print("Register Reference :",REGREF)
 # print()
 # print("Input / output :",IO)
 # starting the assembly process
+GREEN = "\033[92m {}\033[00m"
+RED = "\033[91m {}\033[00m"
 name = input("Enter file name with extension :")
 if(len(name.split('.')) == 2):
     ext = name[-3:]
@@ -33,7 +21,7 @@ if(len(name.split('.')) == 2):
         try:
             file = open(name, 'r+')
         except:
-            print("Sorry, the file wasn't found. Please check directory for the given file")
+            print(RED.format("Sorry, the file wasn't found. Please check directory for the given file"))
             exit()
         program = file.readlines()
         #print(program)
@@ -47,7 +35,7 @@ if(len(name.split('.')) == 2):
             print("No start error")
             condition1 = 1
         else:
-            print("Program is not started by SRT")
+            print(RED.format("Program is not started by SRT"))
         # condition 2
         condition2 = 1
         for i in program:
@@ -58,7 +46,7 @@ if(len(name.split('.')) == 2):
                 if j == " ":
                     c = c+1
             if(c > 2):
-                print("Line \"", i, "\" has more than 3 fields")
+                print(RED.format("Line \"", i, "\" has more than 3 fields"))
                 condition2 = 0
                 break
         if condition2 == 1:
@@ -92,7 +80,7 @@ if(len(name.split('.')) == 2):
                 labels.append(i.split(',')[0].split(" ")[0])
 
         if(len(labels) != len(set(labels))):
-            print("Your labels contain duplicate names ")
+            print(RED.format("Your labels contain duplicate names "))
         else:
             print("No naming error")
             condition4 = 1
@@ -105,7 +93,7 @@ if(len(name.split('.')) == 2):
                 if len(i) != 3:
                     continue
                 else:
-                    print("MRI error at line containing", i)
+                    print(RED.format("MRI error at line containing", i))
                     condition5 = 0
                     break
             else:
@@ -113,7 +101,7 @@ if(len(name.split('.')) == 2):
                     continue
                 else:
                     if len(i) != 3:
-                        print("Non-MRI error at line containing", i)
+                        print(RED.format("Non-MRI error at line containing", i))
                         condition6 = 0
                         break
         if condition5 == 1:
@@ -124,11 +112,12 @@ if(len(name.split('.')) == 2):
         for i in address:
             if i[0].isnumeric() or len(i) > 3 or '.' in i:
                 print(i, "is an invalid address")
-        
+
         #Two pass assembly
+        print(GREEN.format("Correct program!\nTranslating..."))
         Pass.pass1(name)
         Pass.pass2(name)
     else:
-        print(ext, "extension not suppported.\nPlease enter a file with extensions .txt or .asm")
+        print(RED.format(ext + " extension not suppported.\nPlease enter a file with extensions .txt or .asm"))
 else:
-    print("Please enter valid file name")
+    print(RED.format("Please enter valid file name"))
