@@ -6,8 +6,8 @@
 SRT
 BSA TIM; Time for which we want to execute
 BSA TMP; Temperature control
-BSA SPS; Spin speed
-BSA WAT; Wash type
+BSA SSP; Spin speed
+BSA WTP; Wash type
 
 LDA TM I
 CMA

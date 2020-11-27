@@ -1,6 +1,10 @@
 allInstructions = ["STA", "LDA", "ISZ", "BSA", "BUN", "CLA", "CMA", "SRT", "STP",
                    "INC", "SZA", "ICL", "IST", "OCL", "OST", "INP", "SKI", "SPN", "HLT", "DRN"]
 
+MRI = {'STA': '0000','LDA':'0001','ISZ':'0010','BSA':'0011','BUN':'0100'}
+REGREF = { 'SRT':'','STP':'','SPN':'','HLT':'','ICL':'',
+    'IST':'','OCL':'','OST':'','CLA':'','CMA':'','INC':'','SZA':''}
+
 # all operands stored as "operand_name": "value"
 operands = {}
 
@@ -39,12 +43,12 @@ def pass1(name):
 
             lc += 1
             line = file.readline()
-        # print("Operands:")
-        # print(operands)
-        # print("Labels:")
-        # print(labels)
+        print("Operands:")
+        print(operands)
+        print("Labels:")
+        print(labels)
 
-    #print('*****  First Pass End *****')
+    print('*****  First Pass End *****')
 
 
 def pass2(name):
@@ -53,37 +57,65 @@ def pass2(name):
         LocationCounter = 10
         line = file.readline()
         while(line):
-            line = " ".join(line.split())
-            field = line.split(" ", 1)[0]
-            if(";" in field):
-                field = field.split(";", 1)[0]
+            #line = " ".join(line.split())
+            #line = line.replace(';', '')
+            field = line.split()
 
-            if line[0] > ' ' :
-                if(field.endswith(":") or field.endswith(",")):
-                    # dropped ':' and ','
-                    field = field[:-1]
+            if line and line[0] > ' ' :
+                #print(line)
+                if field[0] == ';':
+                    line = file.readline()
+                    continue
+                for i in range(0, len(field)):
+                    if ';' in field[i]:
+                        field[i] = field[i][:-1]
+                        field = field[:i+1]
+                        break 
+                
+                while (',' in field):
+                    field.remove(',')
 
-                if field and field[0] in labels:
+                #print(field)
+
+                if field and (field[0] in labels or field[0] in operands):
                     field = field[1:]
                 if not field:
-                    continue
-                try:
-                    if field[0] in MRI:
-                        Instruction = MRI[field[0]]
-                        if field[1] != None:
-                            Address = labels[field[1]] if (field[1] in labels) else operands[field[1]]
-                            outputFile.write(LocationCounter, Instruction, Address)
-                        else:
-                            #ERROR
-                            outputFile.write("*****************")
-                    elif field[0] in REGREF:
-                        Instruction = REGREF[field[0]]
-                        Address = ""
-                        outputFile.write(LocationCounter, Instruction, Address)
-
-                    #print(LocationCounter, Instruction, Address)
-                    LocationCounter += 1
                     line = file.readline()
-                except:
-                    print ("******************")
+                    continue
+                #try:
+                if field[0] in MRI:
+                    print(field)
+                    Instruction = MRI[field[0]]
+                    if field[1] != None:
+                        Address = labels[field[1]] if field[1] in labels else operands[field[1]]
+                        output = list()
+                        output.append(bin(LocationCounter))
+                        output.append(Instruction)
+                        output.append(Address)
+                        outputFile.write(' '.join(map(str, output)))
+                        outputFile.write('\n')
+                    else:
+                        #ERROR
+                        outputFile.write("*****************")
+                elif field[0] in REGREF:
+                    print(field)
+                    Instruction = REGREF[field[0]]
+                    Address = ""
+                    output = list()
+                    output.append(bin(LocationCounter))
+                    output.append(Instruction)
+                    output.append(Address)
+                    outputFile.write(' '.join(map(str, output)))
+                    outputFile.write('\n')
+
+                #print(LocationCounter, Instruction, Address)
+                LocationCounter += 1
+                #except:
+                #    print ("exception")
+            line = file.readline()
         outputFile.close()
+        print('*****  Second Pass End *****')
+
+# if __name__ == "__main__":
+#     pass1("sample.txt")
+#     pass2("sample.txt")
