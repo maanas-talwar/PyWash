@@ -246,7 +246,7 @@ name     ; contains more than 3 letters
  
 - Save the file, conatining your assembly program, in the `assembler` folder or the same directory in which your assembler codes reside in. NOTE - all the file in the `assembler` directory need to be present in the same folder.
 
- <img src = "https://github.com/TheGupta2012/CAOproject/blob/main/READMEdata/step2.JPG" width = 400px >
+   <img src = "https://github.com/TheGupta2012/CAOproject/blob/main/READMEdata/step2.JPG" width = 400px >
  
 - Run the code by typing `python wash_assemble.py` on the terminal and you would see a prompt message asking the name for your file. Type in the name and press enter. You should see the assembler starting and a syntax check.
 
