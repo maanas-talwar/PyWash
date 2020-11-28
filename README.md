@@ -256,7 +256,7 @@ name     ; contains more than 3 letters
   
    <img src = "https://github.com/TheGupta2012/CAOproject/blob/main/READMEdata/success.JPG" width = 400px >
   
-  - **ERRONEUS EXECUTION** - [CODE](https://github.com/TheGupta2012/CAOproject/blob/main/assembler/error_sample.txt)
+  - **ERRONEUS EXECUTION** - [CODE](https://github.com/TheGupta2012/CAOproject/blob/main/assembler/error_program.txt)
   
 
    <img src = "https://github.com/TheGupta2012/CAOproject/blob/main/READMEdata/fail.JPG" width = 400px >
