@@ -59,29 +59,35 @@ if(len(name.split('.')) == 2):
             if(i == 'STP'):
                 eof = program.index(i)
                 break
-            if(i[0:3] in MRI):
-                address.add(i[4:8].split(' ')[0]) if i[4:8] not in address else address
-        check = set()
-        for i in program:
-            check.add(i.split(',')[0].split(" ")[0])
-            check.add(i.split(':')[0].split(" ")[0])
-        condition3 = 1 if all(i.split(',')[0].split(
-            " ")[0] in address.union(MRI) for i in program) else 0
-        condition3 = 1 if address.union(MRI).difference(check) == {''} else 0
-        print("No labelling error") if condition3 == 1 else print(
-            "You missed some labels: ", address.union(MRI).difference(check))
-
+        if(i[0:3] in MRI):
+            address.add(i[4:8].split(' ')[0]) if i[4:8] not in address else address
+            check = set()
+            file2 = open('mandatorySBR.txt', 'r')
+            program2 = file2.readlines()
+            for i in program2:
+                if ',' in i:
+                    check.add(i.split(',')[0]) if i.split(',')[0] not in check else check
+                if ':' in i:
+                    check.add(i.split(':')[0]) if i.split(':')[0] not in check else check
+            for i in program:
+                if ':' in i:
+                    check.add(i.split(':')[0]) if i.split(':')[0] not in check else check
+            #condition3 = 1 if all(i.split(',')[0].split(" ")[0] in address.union(MRI) for i in program) else 0
+            condition3 = 1 if address.difference(check) == set() else 0
+            print("No labelling error") if condition3 == 1 else print(
+                "You missed some labels: ", address.difference(check))
         # condition 4
         condition4 = 0
         labels = []
-        reserved = {'TM', 'TP', 'SPD', 'WT', 'CLN'}
+        reserved = {'TIM', 'TMP', 'SPS', 'WAT', 'CLN'}
         for i in program:
             if ',' in i and i.split(',')[0].split(" ")[0] not in reserved:
                 labels.append(i.split(',')[0].split(" ")[0])
             if ':' in i and i.split(':')[0].split(" ")[0] not in reserved:
                 labels.append(i.split(':')[0].split(" ")[0])
+        print(labels)
         if(len(labels) != len(set(labels))):
-            print(RED.format("Your labels contain duplicate names "))
+            print("Your labels contain duplicate names ")
         else:
             print("No naming error")
             condition4 = 1
@@ -94,15 +100,15 @@ if(len(name.split('.')) == 2):
                 if len(i) != 3:
                     continue
                 else:
-                    print(RED.format("MRI error at line containing", i))
+                    print("MRI error at line containing", i)
                     condition5 = 0
                     break
             else:
-                if ',' in i:
+                if ',' in i or ':' in i:
                     continue
                 else:
                     if len(i) != 3:
-                        print(RED.format("Non-MRI error at line containing", i))
+                        print("Non-MRI error at line containing", i)
                         condition6 = 0
                         break
         if condition5 == 1:
@@ -113,7 +119,6 @@ if(len(name.split('.')) == 2):
         for i in address:
             if i[0].isnumeric() or len(i) > 3 or '.' in i:
                 print(i, "is an invalid address")
-
         #Two pass assembly
         print(GREEN.format("Correct program!\nTranslating..."))
         Pass.pass1(name)
