@@ -11,7 +11,7 @@ operands = {}
 labels = {}
 
 def pass1(name):
-    #print('*****  First Pass Start *****')
+    print('*****  First Pass Start *****')
     with open(name, "r") as file:
         # starting location counter at memory location 10
         lc = 10
@@ -31,7 +31,8 @@ def pass1(name):
                     # dropped ','
                     probableLabel = probableLabel[:-1]
                     operands[probableLabel] = lc
-            lc += 1
+            if line and line[0] != ';' and line [0] > ' ':
+                lc += 1
             line = file.readline()
         print("Operands:")
         print(operands)
@@ -51,7 +52,7 @@ def pass2(name):
             #line = line.replace(';', '')
             field = line.split()
 
-            if line and line[0] > ' ' :
+            if line and line > " ":
                 #print(line)
                 if field[0] == ';':
                     line = file.readline()
@@ -61,14 +62,21 @@ def pass2(name):
                         field[i] = field[i][:-1]
                         field = field[:i+1]
                         break
+                    if ':' in field[i]:
+                        field[i] = field[i][:-1]
+                        break
 
                 while (',' in field):
                     field.remove(',')
 
                 #print(field)
 
-                if field and (field[0] in labels or field[0] in operands):
+                if field and ((field[0] in labels) or (field[0] in operands)):
                     field = field[1:]
+                    if not field:
+                        line = file.readline()
+                        LocationCounter += 1
+                        continue
                 if not field:
                     line = file.readline()
                     continue
@@ -86,6 +94,7 @@ def pass2(name):
                         output.append(bin(int(Address))[2:].zfill(12))
                         outputFile.write(' '.join(map(str, output)))
                         outputFile.write('\n')
+                        LocationCounter += 1
                     else:
                         #ERROR
                         outputFile.write("*****************")
@@ -99,9 +108,21 @@ def pass2(name):
                     output.append(Address)
                     outputFile.write(' '.join(map(str, output)))
                     outputFile.write('\n')
+                    LocationCounter += 1
+                elif field[0] in IO:
+                    print(field)
+                    Instruction = IO[field[0]]
+                    Address = ""
+                    output = list()
+                    output.append(bin(LocationCounter)[2:])
+                    output.append(Instruction)
+                    output.append(Address)
+                    outputFile.write(' '.join(map(str, output)))
+                    outputFile.write('\n')
+                    LocationCounter += 1
                 time.sleep(0.5)
                 #print(LocationCounter, Instruction, Address)
-                LocationCounter += 1
+                #LocationCounter += 1
                 #except:
                 #    print ("exception")
             line = file.readline()

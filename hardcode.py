@@ -12,3 +12,5 @@ for a, b in REGREF.items():
     counter = counter >> 1
 REGREF['LCK'] = '0111000000000000'
 IO = {'SKI': '1111100000000000', 'INP': '1111010000000000'}
+#print(MRI)
+#print(REGREF)
