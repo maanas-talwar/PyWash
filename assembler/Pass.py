@@ -11,7 +11,7 @@ operands = {}
 labels = {}
 
 def pass1(name):
-    print('*****  First Pass Start *****')
+    # print('*****  First Pass Start *****')
     with open(name, "r") as file:
         # starting location counter at memory location 10
         lc = 10
@@ -45,6 +45,7 @@ def pass1(name):
 def pass2(name):
     with open(name, "r") as file:
         outputFile = open(name[:-4]+"_bin.txt", "w")
+        print("Program instructions:\n")
         LocationCounter = 10
         line = file.readline()
         while(line):
@@ -120,7 +121,7 @@ def pass2(name):
                     outputFile.write(' '.join(map(str, output)))
                     outputFile.write('\n')
                     LocationCounter += 1
-                time.sleep(0.5)
+                # time.sleep(0.5)
                 #print(LocationCounter, Instruction, Address)
                 #LocationCounter += 1
                 #except:

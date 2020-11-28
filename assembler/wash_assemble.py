@@ -13,7 +13,7 @@ from hardcode import *
 # starting the assembly process
 GREEN = "\033[92m {}\033[00m"
 RED = "\033[91m {}\033[00m"
-name = input("Enter file name with extension :")
+name = input("\nEnter file name with extension :")
 if(len(name.split('.')) == 2):
     ext = name[-3:]
     # Checking the extension for the file
@@ -27,7 +27,7 @@ if(len(name.split('.')) == 2):
         #print(program)
         program = [' '.join(i.split(";", 1)[0].split()) for i in program]
         program = [i.upper() for i in program if i]
-        print(program)
+        # print(program)
         condition = [0, 1, 0, 0, 1, 1]
         if program[0] == 'SRT':
             print(GREEN.format("No start error"))
