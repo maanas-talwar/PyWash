@@ -26,8 +26,9 @@ STA TM I; storing 0 in timer and temperature as we are only draining now
 STA TP I
 ICL; inlet valve is cleared(means valve closed), no more water required
 OST; outlet valve is set(means outlet valve opened), water to be flushed
-DRN; drain the water present in the machine
-
+; drain the water present in the machine
+OST ;  outet set 
+ICL ;  inlet clear
 ; The below loop corresponds to the fact that our clothes need to be dried after ; the draining operation and thus they are dried for a CLEAN amount of time.
 
 LDA CLN; loading CLEAN which is the amount of time for which we would drain our machine always
