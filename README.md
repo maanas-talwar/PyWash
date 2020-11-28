@@ -223,7 +223,7 @@ name     ; contains more than 3 letters
 
 ### Example
 
-- Please click [here](https://github.com/TheGupta2012/CAOproject/blob/main/example_program.txt) to see an example program written according to the rules provided.
+- Please click [here](https://github.com/TheGupta2012/CAOproject/blob/main/sample.txt) to see an example program written according to the rules provided.
 
 ### Errors
 
