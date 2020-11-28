@@ -247,13 +247,16 @@ name     ; contains more than 3 letters
 - Save the file, conatining your assembly program, in the `assembler` folder or the same directory in which your assembler codes reside in. NOTE - all the file in the `assembler` directory need to be present in the same folder.
 
  <img src = "https://github.com/TheGupta2012/CAOproject/blob/main/READMEdata/step2.JPG" width = 400px >
+ 
 - Run the code by typing `python wash_assemble.py` on the terminal and you would see a prompt message asking the name for your file. Type in the name and press enter. You should see the assembler starting and a syntax check.
 
 - If your code is error free, the two passes of the assembler should initiate and a final binary output would be generated in the same folder with the name `filename_bin.txt`
-  - SUCCESSFUL EXECUTION - [CODE]("https://github.com/TheGupta2012/CAOproject/blob/main/assembler/sample.txt)
+  - **SUCCESSFUL EXECUTION** - [CODE](https://github.com/TheGupta2012/CAOproject/blob/main/assembler/sample.txt)
+  
   
    <img src = "https://github.com/TheGupta2012/CAOproject/blob/main/READMEdata/success.JPG" width = 400px >
   
-  - ERRORNEUS EXECUTION - [CODE]("https://github.com/TheGupta2012/CAOproject/blob/main/assembler/error_sample.txt)
+  - **ERRONEUS EXECUTION** - [CODE](https://github.com/TheGupta2012/CAOproject/blob/main/assembler/error_sample.txt)
+  
 
    <img src = "https://github.com/TheGupta2012/CAOproject/blob/main/READMEdata/fail.JPG" width = 400px >
