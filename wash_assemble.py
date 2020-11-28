@@ -24,16 +24,16 @@ if(len(name.split('.')) == 2):
             print(RED.format("Sorry, the file wasn't found. Please check directory for the given file"))
             exit()
         program = file.readlines()
-        print(program)
+        #print(program)
         program = [' '.join(i.split(";", 1)[0].split()) for i in program]
         program = [i.upper() for i in program if i]
         print(program)
         condition = [0, 1, 0, 0, 1, 1]
         if program[0] == 'SRT':
-            print("No start error")
+            print(GREEN.format("No start error"))
             condition[0] = 1
         else:
-            print("Program is not started by SRT")
+            print(RED.format("Program is not started by SRT"))
         # condition 2
         for i in program:
             if(i == 'STP'):
@@ -43,11 +43,11 @@ if(len(name.split('.')) == 2):
                 if j == " ":
                     c = c+1
             if(c > 2):
-                print("Line \"", i, "\" has more than 3 fields")
+                print(RED.format("Line \""+str(i)+ "\" has more than 3 fields"))
                 condition[1] = 0
                 break
         if condition[1] == 1:
-            print("No syntax error")
+            print(GREEN.format("No syntax error"))
 
             # condition 3
         address = set()
@@ -73,14 +73,14 @@ if(len(name.split('.')) == 2):
                 labels.add(i.split(',')[0]) if i.split(',')[0] not in labels else labels
         condition[2] = 1 if address.difference(labels) == set(
         ) and mandatory.difference(address) == set() else 0
-        print("No labelling error") if condition[2] == 1 else print("You missed some labels: ",
-                                                                    (address.difference(labels)).union(mandatory.difference(address)))
+        print(GREEN.format("No labelling error")) if condition[2] == 1 else print(RED.format("You missed some labels: "+str(
+                                                                    (address.difference(labels)).union(mandatory.difference(address)))))
 
         # condition 4
         if(len(labels) != len(set(labels))):
-            print("Your labels contain duplicate names ")
+            print(RED.format("Your labels contain duplicate names "))
         else:
-            print("No naming error")
+            print(GREEN.format("No naming error"))
             condition[3] = 1
 
         # condition 5 and 6
@@ -89,31 +89,31 @@ if(len(name.split('.')) == 2):
                 if len(i) != 3:
                     continue
                 else:
-                    print("MRI error at line containing", i)
+                    print(RED.format("MRI error at line containing "+str(i)))
                     condition[4] = 0
                     break
             elif i[0:3] in REGREF or i[0:3] in ['SKI', 'INP']:
                 if len(i) == 3:
                     continue
                 else:
-                    print("Non-MRI error at line containing", i)
+                    print(RED.format("Non-MRI error at line containing "+str(i)))
                     condition[5] = 0
                     break
             else:
                 if ',' in i or ':' in i:
                     continue
                 else:
-                    print("Undefined field at line containing", i)
+                    print(RED.format("Undefined field at line containing "+str(i)))
                     condition[5] = 0
                     break
         if condition[4] == 1:
-            print("No MRI error")
+            print(GREEN.format("No MRI error"))
         if condition[5] == 1:
-            print("No non-MRI error")
+            print(GREEN.format("No non-MRI error"))
         # syntax analysis
         for i in address:
             if i[0].isnumeric() or len(i) > 3 or '.' in i:
-                print(i, "is an invalid address")
+                print(RED.format(str(i)+ "is an invalid address"))
 
         if all(i == 1 for i in condition):
             # Two pass assembly
@@ -121,7 +121,7 @@ if(len(name.split('.')) == 2):
             Pass.pass1(name)
             Pass.pass2(name)
         else:
-            print("Please rectify the above error(s) before proceeding further")
+            print(RED.format("Please rectify the above error(s) before proceeding further"))
     else:
         print(RED.format(ext + " extension not suppported.\nPlease enter a file with extensions .txt or .asm"))
 else:
