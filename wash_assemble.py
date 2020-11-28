@@ -13,7 +13,7 @@ from hardcode import *
 # starting the assembly process
 GREEN = "\033[92m {}\033[00m"
 RED = "\033[91m {}\033[00m"
-name = input("Enter file name with extension :")
+name = input("\nEnter file name with extension :")
 if(len(name.split('.')) == 2):
     ext = name[-3:]
     # Checking the extension for the file
