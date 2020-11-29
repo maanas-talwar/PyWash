@@ -40,22 +40,25 @@ STA WT I; AC is stored in the wash type and spin speed (AC is actually zero ;and
 STA SPD I
 STP
 ; Labels and sub - routines
-TIM: SKI
+TIM: HEX 0
+     SKI
      BUN TIM
      INP
      STA TM I
      BUN TIM I
-TMP: SKI
+TMP: HEX 0
      BUN TMP
      INP
      STA TP I
      BUN TMP I
-SSP: SKI
+SSP: HEX 0
+     SKI
      BUN SSP
      INP
      STA SPD I
      BUN SSP I
-WTP: SKI
+WTP: HEX 0
+     SKI
      BUN WTP
      INP
      STA WT I
