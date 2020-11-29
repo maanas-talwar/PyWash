@@ -1,12 +1,12 @@
-;  This is a simple program which takes in the timer, temperature, spin speed info and wash type info and executes
-;  the wash cycle for a given amount of time as present in the timer info.
+;  This is a simple program which takes in the timer, temperature, spin speed info and wash type info and executes 
+;  the wash cycle for a given amount of time as present in the timer info. 
 ;  NOTE -
 ; TIM, TMP, SPS, WAT are subroutines which have specific executions
 
 SRT
 BSA TIM; Time for which we want to execute
 BSA TMP; Temperature control
-BSA SPD; Spin speed
+BSA SSP; Spin speed
 BSA WTP; Wash type
 
 LDA TM I
@@ -15,7 +15,7 @@ INC
 ; Loop to execute Washing of clothes
 SPN; start spinning of the motor
 LOP: INC
-     SZA
+     SZA 
      BUN LOP
 HLT; halt the motor
 
@@ -26,13 +26,11 @@ STA TM I; storing 0 in timer and temperature as we are only draining now
 STA TP I
 ICL; inlet valve is cleared(means valve closed), no more water required
 OST; outlet valve is set(means outlet valve opened), water to be flushed
-DRN; drain the water present in the machine
-
 ; The below loop corresponds to the fact that our clothes need to be dried after ; the draining operation and thus they are dried for a CLEAN amount of time.
 
 LDA CLN; loading CLEAN which is the amount of time for which we would drain our machine always
 CMA; complement and incrementing so that negative value used as counter
-INC
+INC 
 SPN; start the spinning of the motor
 REP:  INC
       SZA
@@ -42,22 +40,25 @@ STA WT I; AC is stored in the wash type and spin speed (AC is actually zero ;and
 STA SPD I
 STP
 ; Labels and sub - routines
-TIM: SKI
+TIM: HEX 0
+     SKI
      BUN TIM
      INP
      STA TM I
      BUN TIM I
-TMP: SKI
+TMP: HEX 0
      BUN TMP
      INP
      STA TP I
      BUN TMP I
-SSP: SKI
+SSP: HEX 0
+     SKI
      BUN SSP
      INP
      STA SPD I
      BUN SSP I
-WTP: SKI
+WTP: HEX 0
+     SKI
      BUN WTP
      INP
      STA WT I

@@ -223,7 +223,7 @@ name     ; contains more than 3 letters
 
 ### Example
 
-- Please click [here](https://github.com/TheGupta2012/CAOproject/blob/main/example_program.txt) to see an example program written according to the rules provided.
+- Please click [here](https://github.com/TheGupta2012/CAOproject/blob/main/sample.txt) to see an example program written according to the rules provided.
 
 ### Errors
 
@@ -238,6 +238,25 @@ name     ; contains more than 3 letters
 
 ## Running the Assembler
 
-### Steps
+ - Clone the repository in your system using `git clone` with `repository_link.git` If you do not have `git` installed in your system, you can simply download the codes present in `assembler` folder in our repository.
+ 
+ - With the assembler code downloaded, open `cmd` and navigate to the directory in which your code resides. ( If you used `git clone` just type `cd CAOproject/assembler`). See below - 
+ 
+ <img src = "https://github.com/TheGupta2012/CAOproject/blob/main/READMEdata/step1.JPG" width = 400px >
+ 
+- Save the file, conatining your assembly program, in the `assembler` folder or the same directory in which your assembler codes reside in. NOTE - all the file in the `assembler` directory need to be present in the same folder.
 
-### Screenshots
+   <img src = "https://github.com/TheGupta2012/CAOproject/blob/main/READMEdata/step2.JPG" width = 400px >
+ 
+- Run the code by typing `python wash_assemble.py` on the terminal and you would see a prompt message asking the name for your file. Type in the name and press enter. You should see the assembler starting and a syntax check.
+
+- If your code is error free, the two passes of the assembler should initiate and a final binary output would be generated in the same folder with the name `filename_bin.txt`
+  - **SUCCESSFUL EXECUTION** - [CODE](https://github.com/TheGupta2012/CAOproject/blob/main/assembler/sample.txt)
+  
+  
+   <img src = "https://github.com/TheGupta2012/CAOproject/blob/main/READMEdata/success.JPG" width = 400px >
+  
+  - **ERRONEUS EXECUTION** - [CODE](https://github.com/TheGupta2012/CAOproject/blob/main/assembler/error_program.txt)
+  
+
+   <img src = "https://github.com/TheGupta2012/CAOproject/blob/main/READMEdata/fail.JPG" width = 400px >
