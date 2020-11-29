@@ -244,7 +244,7 @@ name     ; contains more than 3 letters
  
  <img src = "https://github.com/TheGupta2012/CAOproject/blob/main/READMEdata/step1.JPG" width = 400px >
  
-- Save the file, conatining your assembly program, in the `assembler` folder or the same directory in which your assembler codes reside in. NOTE - all the file in the `assembler` directory need to be present in the same folder.
+- Save the file, conatining your assembly program, in the `assembler` folder or the same directory in which your assembler codes reside in. NOTE - all the files in the `assembler` directory need to be present in the same folder.
 
    <img src = "https://github.com/TheGupta2012/CAOproject/blob/main/READMEdata/step2.JPG" width = 400px >
  
