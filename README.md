@@ -62,7 +62,8 @@ This is a project which aims to build a **Two-Pass Assembler for a real world sy
   - `AR` - Adress register - 12bit
   - `INPR` - Input Register - 8bit
   - `OUTR` - Output Register - 8bit
-  - `SR` - Status register - 8bit (extra bits provided for future changes in functionality)  
+  - `IR` - Instruction Register - 16bit
+  - `SR` - Status register - 8bit 
      <img src = "https://github.com/TheGupta2012/CAOproject/blob/main/READMEdata/status_register.JPG" width = 400px>
 
 - **Instruction Set** : The instructions are based on the _Single Address Instruction_ format and has the accumulator as the general purpose register. X referred to in the instructions is either a memory location or a symbolic address present as a label in the program.
@@ -244,7 +245,7 @@ name     ; contains more than 3 letters
  
  <img src = "https://github.com/TheGupta2012/CAOproject/blob/main/READMEdata/step1.JPG" width = 400px >
  
-- Save the file, conatining your assembly program, in the `assembler` folder or the same directory in which your assembler codes reside in. NOTE - all the files in the `assembler` directory need to be present in the same folder.
+- Save the file, containing your assembly program, in the `assembler` folder or the same directory in which your assembler codes reside in. NOTE - all the files in the `assembler` directory need to be present in the same folder.
 
    <img src = "https://github.com/TheGupta2012/CAOproject/blob/main/READMEdata/step2.JPG" width = 400px >
  
