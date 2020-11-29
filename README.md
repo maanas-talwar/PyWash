@@ -18,19 +18,19 @@ This is a project which aims to build a **Two-Pass Assembler for a real world sy
 
 1. Prerequisites - _python3, git bash(optional)_
 
-2. Download the `wash_assemble.py` to a directory where you wish to store your assembly programs or you can run `git clone https://github.com/TheGupta2012/CAOproject.git` if you have git CLI installed in your system and `cd CAOproject` after the cloning process is done.
+2. Download the `wash_assemble.py` to a directory where you wish to store your assembly programs or you can run `git clone https://github.com/TheGupta2012/CAOproject.git` if you have git CLI installed in your system and `cd CAOproject/assembler` after the cloning process is done.
 
 3. Open a terminal(linux/macOS) /command prompt(Windows) and navigate to the directory in which you downloaded the `wash_assemble.py` file.
 
-4. It is advised to write or save your assembly program in the same directory as your `wash_assemble.py` file. An assembly file can have any extension which is (.txt or .asm). While writing any assembly program for the current assembler configuration, the code written in **SBR_memory_locs.txt** must be included before the `STP` instruction.
+4. Save your assembly program in the same directory as your `wash_assemble.py` file. An assembly file can have any extension which is (.txt or .asm).
 
-5. Run the assembler program by typing ``python ./wash_assemble.py``
+5. Run the assembler program by typing ``python wash_assemble.py``
 
-6. After the execution of the above command, you will be prompted to type in the name your assembly file. NOTE - please provide the exact path if the file is not in the smae directory as the assembler code.
+6. After the execution of the above command, you will be prompted to type in the name your assembly file. NOTE - please ensure that your file is in the same directory as the assembler code.
 
-7. If the assembly code is valid, you should see a message `SUCCESSFULLY CONVERTED filename TO filename_binary.bin` and a file with the name `filename_binary.bin` should be available for you to see in the same directory as the assembler file.
+7. If the assembly code is valid, you should see a message `Output file has been successfully generated as filename_bin.txt in your directory!` and a file with the name `filename_bin.txt` should be available in the same directory as the assembler file.
 
-8. If there are any kinds of errors or warnings(discussed later) encountered during the assembling process, the CLI would show a `ERROR ENCOUNTERED WHILE ASSEMBLING filename.asm. Please check message_filename.log for details.` message. This means that whatever errors or warnings were encountered in the building of the binary file are recorder in the .log file with time stamping and line detection.
+8. If there are any kinds of errors or warnings(discussed later) encountered during the assembling process, the CLI would show relevant error messages. Whatever errors that are encountered are highlighted in the terminal for correction.
 
 ## Structure of our System
 
@@ -109,7 +109,7 @@ This is a project which aims to build a **Two-Pass Assembler for a real world sy
   - `WTP` : Setting the wash type for the machine cycle. Values assigned for the wash type are -
       
      0: WASH
-    1: DRAIN
+     1: DRAIN
   - `TMP` : Setting the temperature of the water used in washing. Values assigned for temperature are -
 
              0 : COLD
