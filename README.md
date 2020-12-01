@@ -12,9 +12,8 @@ Washing machine is a simple system whose operations can be emulated through soft
 For technical problems, please report to [issues](https://github.com/maanas-talwar/CAOproject/issues)  
 For information regarding the sytax of the assembly level program and further insight, please refer to the [project report](https://docs.google.com/document/d/1TdVdbe3Mtm1unn6rAJ7N5usXUpmf34xankx5qu75fZo/edit?usp=sharing)
 
-## Dependencies:
-* language: python(3.8)
-> time
+## Language:
+> Python(3.8)
 
 ## Contents
 ```
