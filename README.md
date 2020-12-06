@@ -28,8 +28,8 @@ For information regarding the sytax of the assembly level program and further in
 ```
 
 ## Execution
-* To run the assembler, first change your directory to `CAOproject/assembler/` using the following command:
-> cd CAOproject/assembler/
+* To run the assembler, first change your directory to `pywash/assembler/` using the following command:
+> cd pywash/assembler/
 * Save the assembly level program in this directory.
 * The process can be run by the following command:
 > python wash_assemble.py
