@@ -1,7 +1,3 @@
-PyWash
-=============
-Two Pass Assembler for a Washing Machine System
-
 ## Description
 Washing machine is a simple system whose operations can be emulated through software. The assembler assumes that the operations happening on the hardware level are implemented in the system itself. The assembler only converts the assembly level program to a binary output.
 - The washing machine is a simple device consisting of two basic operations - **WASH** and **DRY**.
